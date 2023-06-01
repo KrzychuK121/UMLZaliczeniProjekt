@@ -1,0 +1,26 @@
+@startuml
+
+actor Uczen
+actor Nauczyciel
+actor Rodzic
+
+usecase "Dodawanie slownikow" as Dodawanie
+usecase "Edytowanie slownikow" as Edytowanie
+usecase "Usuwanie slownikow" as Usuwanie
+
+usecase "Przegladanie ocen" as Oceny
+
+usecase "Zdawanie testow" as Testy
+
+
+Nauczyciel -- Dodawanie
+Nauczyciel -- Edytowanie
+Nauczyciel -- Usuwanie
+Nauczyciel -- Oceny
+
+Uczen -- Oceny
+Uczen -- Testy
+
+Rodzic -- Oceny
+
+@enduml
