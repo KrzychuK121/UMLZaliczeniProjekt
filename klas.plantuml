@@ -1,0 +1,81 @@
+@startuml
+
+class Edycja{
+
+}
+
+class ListaSlowek{
+
+}
+
+class Main{
+
+}
+
+class Menu{
+
+}
+
+class ObslugaOkienka{
+
+}
+
+class ObslugaPliku{
+
+}
+
+class Ocena{
+
+}
+
+class Odpytanie{
+
+}
+
+class WyswietlPlik{
+
+}
+
+class GuzikCofnij{
+
+}
+
+class PanelLista{
+
+}
+
+class PanelNapiszPlik{
+
+}
+
+class PanelListaDodaj{
+
+}
+
+class PanelListaUsun{
+
+}
+
+class  PanelPrzepytania{
+
+}
+
+class PanelWyniku{
+
+}
+
+
+
+class Uczen{
+
+}
+
+class Nauczyciel{
+
+}
+
+class Rodzic{
+
+}
+
+@enduml
