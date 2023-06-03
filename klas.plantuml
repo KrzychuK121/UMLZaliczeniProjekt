@@ -4,10 +4,6 @@ class Main{
 
 }
 
-class ObslugaOkienka{
-
-}
-
 class ObslugaPliku{
 
 }
@@ -29,6 +25,14 @@ class Odpytanie{
 }
 
 class WyswietlPlik{
+
+}
+
+class WyswietlOceny{
+
+}
+
+class Uzytkownik{
 
 }
 
@@ -59,5 +63,53 @@ class Klasa{
 }
 
 
+'--Relacje miêdzy obiektami--'
+
+/'
+
+--|> Dziedziczy po
+--> Zawiera siê w
+<o> Wywo³ywany w --  
+"x" Posiada wiele --o "y" <iloœæ>
+n Dowolna liczba
+
+
+'/
+
+ ObslugaPliku "o" -- Main
+ ObslugaPliku "o" -- Menu
+
+ Ocena "ObslugaPliku" --o "Ocena <n>" ObslugaPliku
+
+ Uzytkownik --> Main
+ Menu "o" -- Main
+
+ Odpytanie --> Menu
+ WyswietlPlik --> Menu
+ WyswietlOceny --> Menu
+ Edycja --> Menu
+ Uzytkownik --> Menu
+
+ Nauczyciel --|> Uzytkownik
+ Uczen --|> Uzytkownik
+ Rodzic --|> Uzytkownik
+
+ Uczen --> WyswietlOceny
+
+ Rodzic "Rodzina" -up-o "Rodzic <1-2>" Rodzina
+ Uczen "Rodzina" -up-o "Uczen <1-n>" Rodzina
+
+ Nauczyciel "Klasa" -up-o "Nauczyciel <0-n>" Klasa
+ Uczen "Klasa" -up-o "Uczen <1-n>" Klasa
+
+ /'
+ Edycja posiada wiele klas i na tej podstawie wyœwietla listê plików.
+ Na tych plikach mo¿e operowaæ Nauczyciel. Edycja nie potrzebuje
+ przechowywaæ U¿ytkownika, poniewa¿ do jej opcji bêdzie mia³ tylko
+ U¿ytkownik, który jest Nauczycielem.
+ '/
+ Klasa "Edycja" --o "Klasa <1-n>" Edycja
+
+ Klasa "WyswietlPlik" --o "Klasa <1-n>" WyswietlPlik
 
 @enduml
