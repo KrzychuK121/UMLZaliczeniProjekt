@@ -1,18 +1,6 @@
 @startuml
 
-class Edycja{
-
-}
-
-class ListaSlowek{
-
-}
-
 class Main{
-
-}
-
-class Menu{
 
 }
 
@@ -21,6 +9,14 @@ class ObslugaOkienka{
 }
 
 class ObslugaPliku{
+
+}
+
+class Menu{
+
+}
+
+class Edycja{
 
 }
 
@@ -36,36 +32,6 @@ class WyswietlPlik{
 
 }
 
-class GuzikCofnij{
-
-}
-
-class PanelLista{
-
-}
-
-class PanelNapiszPlik{
-
-}
-
-class PanelListaDodaj{
-
-}
-
-class PanelListaUsun{
-
-}
-
-class  PanelPrzepytania{
-
-}
-
-class PanelWyniku{
-
-}
-
-
-
 class Uczen{
 
 }
@@ -77,5 +43,21 @@ class Nauczyciel{
 class Rodzic{
 
 }
+
+/'
+Klasa reprezentuj¹ca relacje wiele do wielu Rodzica i Ucznia
+'/
+class Rodzina{
+	
+}
+
+/'
+Klasa reprezentuj¹ca relacjê wiele do wielu Nauczycieli i Uczniów 
+'/
+class Klasa{
+
+}
+
+
 
 @enduml
