@@ -1,26 +1,48 @@
 @startuml
 
+actor Uzytkownik
 actor Uczen
 actor Nauczyciel
 actor Rodzic
+actor "Zrodlo danych" as Dane
+
+usecase Logowanie
+usecase Rejestracja
+usecase "Weryfikacja logowania/rejestracji" as Weryfikacja
 
 usecase "Dodawanie slownikow" as Dodawanie
 usecase "Edytowanie slownikow" as Edytowanie
 usecase "Usuwanie slownikow" as Usuwanie
+usecase "Przegladanie slownikow" as Slowniki
 
 usecase "Przegladanie ocen" as Oceny
 
 usecase "Zdawanie testow" as Testy
 
+Uzytkownik -- Logowanie
+Uzytkownik -- Rejestracja
 
+Nauczyciel -up-|> Uzytkownik
 Nauczyciel -- Dodawanie
 Nauczyciel -- Edytowanie
 Nauczyciel -- Usuwanie
 Nauczyciel -- Oceny
+Nauczyciel -- Slowniki
 
+Dane -up- Dodawanie
+Dane -up- Edytowanie
+Dane -up- Usuwanie
+Dane -- Weryfikacja
+
+Uczen -up-|> Uzytkownik
 Uczen -- Oceny
 Uczen -- Testy
+Uczen -- Slowniki
 
+Rodzic -up-|> Uzytkownik
 Rodzic -- Oceny
+
+Logowanie -- Weryfikacja
+Rejestracja -- Weryfikacja
 
 @enduml
