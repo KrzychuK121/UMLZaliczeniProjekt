@@ -1,2 +1,2 @@
 # UMLZaliczeniProjekt
-Projekt UML na zaliczenie o tematyce ,,Obsługa konta klienta indywidualnego w banku".
+Projekt UML na zaliczenie o tematyce "Program do nauki angielskiego dla szkoły".
