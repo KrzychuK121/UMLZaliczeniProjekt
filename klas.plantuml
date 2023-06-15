@@ -1,38 +1,99 @@
 @startuml
 
 class Main{
-
+	public static void main();
 }
 
 class ObslugaPliku{
 
 }
 
-class Menu{
+class Ocena{
+	private String komunikat, nazwa;
+    private int dolnaGranica, gornaGranica;
 
+	public Ocena(String nazwa, int gornaGranica, int dolnaGranica, String komunikat);
+    
+    public String getKomunikat();
+    
+    public String getNazwa();
+    
+    public int getDolnaGranica();
+    
+    public int getGornaGranica();
+    
+    public String toString();
+    
+    public boolean czyWZakresie(int procent);
+    
+    public boolean czyWZakresie(double procent);
+}
+
+class PanelUzytkownika{
+	public boolean Logowanie();
+	public boolean Rejestracja();
+	private boolean Weryfikacja(boolean czyLogowanie);
+}
+
+class Menu{
+    {field}private ObslugaOkienka obslugaOkienka = new ObslugaOkienka();
+    private ArrayList<JFrame> oknaOpcji;
+    private Odpytanie oOdpytanie;
+    private WyswietlPlik oWyswietlPlik;
+    private Edycja oEdycja;
+    private Uzytkownik uzytkownik;
+
+    private void initComponents();
+    public void myOptions();
+    private void gOdpytanieActionPerformed(java.awt.event.ActionEvent evt);                            
+
+    private void gOdczytActionPerformed(java.awt.event.ActionEvent evt);                                
+
+    private void gZmianaPlikuActionPerformed(java.awt.event.ActionEvent evt);                                          
+
+    private void gZapisActionPerformed(java.awt.event.ActionEvent evt);                                    
+
+    public void zamknijWszystkieOkna();
+    
+    public void addOknaOpcji(JFrame okno);
 }
 
 class Edycja{
-
-}
-
-class Ocena{
+    private Uzytkownik uzytkownik;
+    public void myOptions();
+    public void wstawDane();
+    public void zapiszDoTablicy(boolean czyTezDoPliku);
+    public void usunZestaw(boolean czyZPliku);
+    public void usunNa(int indeks);
 
 }
 
 class Odpytanie{
+    private Uzytkownik uzytkownik;
 
+    private void zadajPytanie();
+    private void sprawdzOdpowiedz(String odpowiedz);
+    private void ustawEtykietyOdpowiedzi(String eWerdykt, String eInfoOPoprawnej, String ePoprawnaOdpowiedz);
+    public void pokazWynik(String nazwaPanelu);
 }
 
 class WyswietlPlik{
-
+    private Uzytkownik uzytkownik;
 }
 
 class WyswietlOceny{
-
+    private Uzytkownik uzytkownik;
 }
 
-class Uzytkownik{
+abstract Uzytkownik{
+    public final int RODZIC = 0,
+                      UCZEN = 1,
+                      NAUCZYCIEL = 2;
+	public final String PESEL;
+	public final String IMIE;
+	public final String NAZWISKO;
+
+    public abstract int getTypUzytkownika();
 
 }
 
@@ -48,22 +109,8 @@ class Rodzic{
 
 }
 
-/'
-Klasa reprezentuj¹ca relacje wiele do wielu Rodzica i Ucznia
-'/
-class Rodzina{
-	
-}
 
-/'
-Klasa reprezentuj¹ca relacjê wiele do wielu Nauczycieli i Uczniów 
-'/
-class Klasa{
-
-}
-
-
-'--Relacje miêdzy obiektami--'
+'-=-Relacje miêdzy obiektami-=-'
 
 /'
 
@@ -78,38 +125,30 @@ n Dowolna liczba
 
  ObslugaPliku "o" -- Main
  ObslugaPliku "o" -- Menu
+ ObslugaPliku "o" -- PanelUzytkownika
 
  Ocena "ObslugaPliku" --o "Ocena <n>" ObslugaPliku
 
- Uzytkownik --> Main
- Menu "o" -- Main
+ PanelUzytkownika "o" -- Main
+ Menu "o" -- PanelUzytkownika
 
+ Uzytkownik --> Menu
  Odpytanie --> Menu
  WyswietlPlik --> Menu
  WyswietlOceny --> Menu
  Edycja --> Menu
- Uzytkownik --> Menu
+
+ Uzytkownik --> Odpytanie
+ Uzytkownik --> WyswietlPlik
+ Uzytkownik --> WyswietlOceny
+ Uzytkownik --> Edycja
 
  Nauczyciel --|> Uzytkownik
  Uczen --|> Uzytkownik
  Rodzic --|> Uzytkownik
 
- Uczen --> WyswietlOceny
+ Uczen "Rodzic" -up-o "Uczen <1-n>" Rodzic
 
- Rodzic "Rodzina" -up-o "Rodzic <1-2>" Rodzina
- Uczen "Rodzina" -up-o "Uczen <1-n>" Rodzina
-
- Nauczyciel "Klasa" -up-o "Nauczyciel <0-n>" Klasa
- Uczen "Klasa" -up-o "Uczen <1-n>" Klasa
-
- /'
- Edycja posiada wiele klas i na tej podstawie wyœwietla listê plików.
- Na tych plikach mo¿e operowaæ Nauczyciel. Edycja nie potrzebuje
- przechowywaæ U¿ytkownika, poniewa¿ do jej opcji bêdzie mia³ tylko
- U¿ytkownik, który jest Nauczycielem.
- '/
- Klasa "Edycja" --o "Klasa <1-n>" Edycja
-
- Klasa "WyswietlPlik" --o "Klasa <1-n>" WyswietlPlik
+ Uczen "Nauczyciel" -up-o "Uczen <1-n>" Nauczyciel
 
 @enduml
