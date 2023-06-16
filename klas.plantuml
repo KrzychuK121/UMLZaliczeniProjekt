@@ -5,7 +5,36 @@ class Main{
 }
 
 class ObslugaPliku{
+    private static int iloscStron = 0;
+    private static double poprawneOdpowiedzi = 0.0;
+    {field}private static final String sciezkaProgramu = new File("").getAbsolutePath(),
+				sciezkaZestawSlowek = ObslugaPliku.sciezkaProgramu + "\\Slowniki",
+				sciezkaOcen = ObslugaPliku.sciezkaProgramu + "\\Oceny";
+    
+    private static String nazwaPliku = "NowyPlikOdpytanie", 
+			  rozszerzenie = ".txt",
+			  nazwaPlikuOcen = "domyslne",
+			  rozszerzenieOcen = ".txt",
+			  pelnaNazwaPliku = sciezkaZestawSlowek + "\\" + nazwaPliku + rozszerzenie,
+			  pelnaNazwaPlikuOcen = sciezkaOcen + "\\" + nazwaPlikuOcen + rozszerzenieOcen,
+			  granicaSlow = ";";
+    private static boolean czyMaZawartosc = false;
+    {field}private static ArrayList<String> pytania = new ArrayList<>(),
+			      {field}odpowiedzi = new ArrayList<>();
+    {field}private static ArrayList<Ocena> oceny = new ArrayList<>();
 
+    public static void ustawPlikUzytkownika(Uzytkownik uzytkownik);
+    public static void setCzyMaZawartosc(boolean czyMaZawartosc);
+    public static void setIloscStron();
+    public static String czyPoprawnyString(String doSprawdzenia);
+    public static boolean czyIstniejePlik(JFrame okno);
+    public static void czyPlikMaZawartosc(String nazwaPliku);
+    public static boolean czyPoprawnaZawartoscPliku(String linia);
+    public static boolean czyPoprawnaZawartoscPlikuOcen(String linia);
+    public static void przygotujFoldery();
+    public static String czytanieZPliku(String nazwaPliku, boolean czyZapisac);
+    public static String zapisDoPliku(Object[] pytania, Object[] odpowiedzi, boolean czyDopisac);
+    public static String czytanieOcen(String nazwaPliku, boolean czyZapisac);
 }
 
 class Ocena{
@@ -94,19 +123,23 @@ abstract Uzytkownik{
 	public final String NAZWISKO;
 
     public abstract int getTypUzytkownika();
+    public abstract Uczen wybierzUcznia();
 
 }
 
 class Uczen{
-
+    public int getTypUzytkownika();
+    public Uczen wybierzUcznia();
 }
 
 class Nauczyciel{
-
+    public int getTypUzytkownika();
+    public Uczen wybierzUcznia();
 }
 
 class Rodzic{
-
+    public int getTypUzytkownika();
+    public Uczen wybierzUcznia();
 }
 
 
