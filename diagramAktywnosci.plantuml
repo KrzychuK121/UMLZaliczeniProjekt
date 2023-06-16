@@ -1,0 +1,45 @@
+@startuml
+
+(*) --> if "Czy uzytkownik ma konto?" then 
+        --> [tak] if "Czy uzytkownik jest zalogowany?" then
+            --> [tak] "idz do menu"
+        else
+            --> [nie] "zaloguj uzytkownika"
+        endif
+    else 
+        --> [nie] "zarejestruj uzytkownika"
+        --> "zaloguj uzytkownika"
+        --> "idz do menu"
+    endif 
+    "idz do menu" --> if "Jaka akcje wybiera uzytkownik?"
+        --> [Odpytanie] "otworz okno z odpytywaniem"
+        --> "zapytaj o odpowiedz"
+        --> if "Czy uczen podal prawidlowa odpowiedz?" then
+            --> [tak] "wyswietl informacje o prawidlowej odpowiedzi"
+            --> "Czy skonczyly sie pytania?"
+        else
+            --> [nie] "wyswietl informacje o blednej odpowiedzi\ni wyswietl prawidlowa odpowiedz"
+            --> "Czy skonczyly sie pytania?"
+        endif
+        --> if "Czy skonczyly sie pytania?" then
+            --> [tak] "wyswietl ocene"
+            -->  "zapisz ocene"
+            --> "idz do menu"
+        else
+            --> [nie] "zapytaj o odpowiedz"
+        endif
+
+    else 
+        --> [Edycja pliku] "Wyswietl liste plikow\nz opcjami usuniecia/dodania nowego"
+        --> "idz do menu"
+    else 
+        --> [Wyswietlenie slownika] "wybierz ucznia do wyswietlenia slownika"
+        --> "idz do menu"
+    else
+        --> [Wyswietlenie ocen] "wybierz ucznia do wyswietlenia oceny"
+        --> "idz do menu"
+    else
+        --> [Zakonczenie dzialania programu] (*)
+    endif
+
+@enduml
