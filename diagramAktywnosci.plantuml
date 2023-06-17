@@ -16,10 +16,10 @@
         --> "zapytaj o odpowiedz"
         --> if "Czy uczen podal prawidlowa odpowiedz?" then
             --> [tak] "wyswietl informacje o prawidlowej odpowiedzi"
-            --> "Czy skonczyly sie pytania?"
+            --> "sprawdz czy skonczyly sie pytania"
         else
             --> [nie] "wyswietl informacje o blednej odpowiedzi\ni wyswietl prawidlowa odpowiedz"
-            --> "Czy skonczyly sie pytania?"
+            --> "sprawdz czy skonczyly sie pytania"
         endif
         --> if "Czy skonczyly sie pytania?" then
             --> [tak] "wyswietl ocene"
@@ -30,7 +30,26 @@
         endif
 
     else 
-        --> [Edycja pliku] "Wyswietl liste plikow\nz opcjami usuniecia/dodania nowego"
+        --> [Edycja pliku] "Wyswietl liste plikow\nz opcjami usuniecia/dodania nowego" as wyswietlListePlikow
+        --> if "Co uzytkownik robi z plikami?" then
+            --> [konczy prace] "idz do menu"
+        else
+            --> [usuwa] "zostaje wyswietlona informacja\no potwierdzenie usuniecia pliku"
+            --> if "Czy uzytkownik potwierdza usuniecie pliku?" then
+                --> [tak] "plik zostaje usuniety"
+                --> wyswietlListePlikow
+            else
+                --> [nie] wyswietlListePlikow
+            endif
+        else
+            --> [dodaje] "tworzy nowy plik wedlug ustalonego szablonu"
+            --> wyswietlListePlikow
+        else
+            --> [wybiera] "otwiera okno edycji pliku"
+            --> "uzytkownik dokonuje zmiany w pliku"
+            --> "uzytkownik zapisuje zmiany pliku"
+            --> wyswietlListePlikow
+        endif
         --> "idz do menu"
     else 
         --> [Wyswietlenie slownika] "wybierz ucznia do wyswietlenia slownika"
