@@ -28,7 +28,6 @@
         else
             --> [nie] "zapytaj o odpowiedz"
         endif
-
     else 
         --> [Edycja pliku] "Wyswietl liste plikow\nz opcjami usuniecia/dodania nowego" as wyswietlListePlikow
         --> if "Co uzytkownik robi z plikami?" then
@@ -52,10 +51,22 @@
         endif
         --> "idz do menu"
     else 
-        --> [Wyswietlenie slownika] "wybierz ucznia do wyswietlenia slownika"
+        --> [Wyswietlenie slownikow] if "Czy uzytkownik jest uczniem?" then
+            --> [tak] "wyswietl liste plikow przypisanych do ucznia"
+        else
+            --> [nie] "uzytkownik wybiera ucznia\ndo wyswietlenia slownikow"
+        endif
+        --> "wyswietl liste plikow przypisanych do ucznia"
+        --> "uzytkownik wybiera slownik\nprzypisany do wybranego ucznia"
+        --> "wyswietl zawartosc slownika ucznia z opcja tylko do odczytu"
         --> "idz do menu"
     else
-        --> [Wyswietlenie ocen] "wybierz ucznia do wyswietlenia oceny"
+        --> [Wyswietlenie ocen] if "Czy uzytkownik jest uczniem?" then
+            --> [tak] "wyswietl liste slownikow oraz ocen\nuzyskanych z odpytania"
+        else
+            --> [nie] "uzytkownik wybiera ucznia\ndo wyswietlenia ocen"
+        endif
+        --> "wyswietl liste slownikow oraz ocen\nuzyskanych z odpytania"
         --> "idz do menu"
     else
         --> [Zakonczenie dzialania programu] (*)
