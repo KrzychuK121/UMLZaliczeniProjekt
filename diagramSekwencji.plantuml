@@ -1,0 +1,22 @@
+@startuml
+
+'¿eby odró¿niæ od klasy Uzytkownik
+actor Klient
+
+Klient --> PanelUzytkownika : otworzenie panelu logowania i rejestracji
+alt rejestracja
+	PanelUzytkownika --> PanelUzytkownika : pobranie danych od uzytkownika
+	PanelUzytkownika --> PanelUzytkownika : weryfikacja danych
+	PanelUzytkownika --> ObslugaPliku : zapisanie w pliku nowego uzytkownika
+	PanelUzytkownika --> Menu : wyswietlenie Menu dostepnego dla Uzytkownika utworzonego na podstawie danych rejestracji
+else uzytkownik juz istnieje
+	PanelUzytkownika --> PanelUzytkownika : popros o inne dane lub zaproponuj zalogowanie sie
+else bledne dane
+	PanelUzytkownika --> PanelUzytkownika : popros o prawidlowe dane	
+end
+
+alt odpytanie
+	Menu --> Odpytanie : otworzenie okna odpytania dla uzytkownika zapisanego w Menu
+end
+
+@enduml
