@@ -28,7 +28,30 @@ alt odpytanie
 	end
 	Odpytanie --> Odpytanie : wyswietlenie oceny
 	Odpytanie --> ObslugaPliku : zapisanie wynikow do pliku
+end
 
+alt wyswietlenie ocen
+	Klient --> WyswietlOceny : otworzenie okna wyswietlania ocen ucznia
+	alt uzytkownik jest uczniem
+		Menu --> Uzytkownik : wybranie uzytkownika jako ucznia do wyswietlenia oceny
+	else uzytkownik nie jest uczniem
+		Menu --> Uzytkownik : wyswietlenie listy uczniow do wyboru
+		Uzytkownik --> Uzytkownik : wybranie ucznia do wyswietlenia oceny
+	end
+	Uzytkownik --> WyswietlOceny : wyswietlenie ocen ucznia
+end
+
+alt wyswietlenie slownikow
+	Klient --> WyswietlPlik : otworzenie okna wyswietlania slownikow ucznia
+	alt uzytkownik jest uczniem
+		Menu --> Uzytkownik : wybranie uzytkownika jako ucznia do wyswietlenia slownikow
+	else uzytkownik nie jest uczniem
+		Menu --> Uzytkownik : wyswietlenie listy uczniow do wyboru
+		Uzytkownik --> Uzytkownik : wybranie ucznia do wyswietlenia slownika
+	end
+	Uzytkownik --> WyswietlOceny : wyswietlenie listy slownikow
+	Klient --> WyswietlPlik : uzytkownik wybiera slownik do wyswietlenia
+	WyswietlPlik --> WyswietlPlik : wyswietlenie slownika uzytkownikowi
 end
 
 @enduml
