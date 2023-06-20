@@ -31,7 +31,7 @@
     else 
         --> [Edycja pliku] "Wyswietl liste plikow\nz opcjami usuniecia/dodania nowego" as wyswietlListePlikow
         --> if "Co uzytkownik robi z plikami?" then
-            --> [konczy prace] "idz do menu"
+            --> [konczy edycje] "idz do menu"
         else
             --> [usuwa] "zostaje wyswietlona informacja\no potwierdzenie usuniecia pliku"
             --> if "Czy uzytkownik potwierdza usuniecie pliku?" then
