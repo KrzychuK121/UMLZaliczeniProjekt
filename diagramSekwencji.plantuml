@@ -23,6 +23,7 @@ end
 
 alt odpytanie
 	Klient --> Odpytanie : otworzenie okna odpytania dla uzytkownika zapisanego w Menu
+	ObslugaPliku --> Odpytanie : pobranie listy pytan i odpowiedzi z pliku
 	loop
 		Odpytanie --> Odpytanie : zadanie pytania i oczekiwanie na odpowiedz Uzytkownika
 	end
@@ -38,6 +39,7 @@ alt wyswietlenie ocen
 		Menu --> Uzytkownik : wyswietlenie listy uczniow do wyboru
 		Uzytkownik --> Uzytkownik : wybranie ucznia do wyswietlenia oceny
 	end
+	ObslugaPliku --> WyswietlOceny : pobranie listy ocen z pliku
 	Uzytkownik --> WyswietlOceny : wyswietlenie ocen ucznia
 end
 
@@ -51,7 +53,13 @@ alt wyswietlenie slownikow
 	end
 	Uzytkownik --> WyswietlOceny : wyswietlenie listy slownikow
 	Klient --> WyswietlPlik : uzytkownik wybiera slownik do wyswietlenia
+	ObslugaPliku --> WyswietlPlik : pobranie listy pytan i odpowiedzi z pliku
 	WyswietlPlik --> WyswietlPlik : wyswietlenie slownika uzytkownikowi
+end
+
+alt edytowanie slownikow
+	Klient --> Edycja : otworzenie okna z lista plikow
+
 end
 
 @enduml
