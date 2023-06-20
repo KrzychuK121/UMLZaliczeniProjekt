@@ -59,7 +59,27 @@ end
 
 alt edytowanie slownikow
 	Klient --> Edycja : otworzenie okna z lista plikow
-
+	Edycja --> Edycja : wyswietlenie listy plikow do edycji
+	alt wybranie pliku do edycji
+		Edycja --> ObslugaPliku : pobranie zawartosci pliku
+		Edycja --> Edycja : wyswietlenie zawartosci pliku do edycji w nowym oknie
+		Klient --> Edycja : dokonanie zmian na pliku
+		Edycja --> ObslugaPliku : zapisanie zmian w pliku
+		Edycja --> Edycja : powrot do wyswietlenia listy plikow
+	end
+	alt dodanie pliku 
+		Edycja --> ObslugaPliku : tworzy nowy plik wedle szablonu
+		Edycja --> Edycja : powrot do wyswietlenia listy plikow
+	end
+	alt usuniecie pliku
+		Edycja --> Edycja : wyswietlenie informacji o potwierdzeniu usuniecia pliku
+		alt usuniecie zostalo potwierdzone
+			Edycja --> ObslugaPliku : usuniecie wybranego pliku do usuniecia
+			Edycja --> Edycja : powrot do wyswietlenia listy plikow
+		else usuniecie zostalo niezaakceptowane
+			Edycja --> Edycja : powrot do wyswietlenia listy plikow
+		end
+	end
 end
 
 @enduml
