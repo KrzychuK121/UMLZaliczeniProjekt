@@ -15,8 +15,20 @@ else bledne dane
 	PanelUzytkownika --> PanelUzytkownika : popros o prawidlowe dane	
 end
 
+alt logowanie
+	PanelUzytkownika --> Menu : wyswietlenie Menu dostepnego dla Uzytkownika po wprowadzeniu danych
+else uzytkownik podal nieprawidlowe dane
+	PanelUzytkownika --> PanelUzytkownika : popros uzytkownika o ponowne podanie danych
+end
+
 alt odpytanie
-	Menu --> Odpytanie : otworzenie okna odpytania dla uzytkownika zapisanego w Menu
+	Klient --> Odpytanie : otworzenie okna odpytania dla uzytkownika zapisanego w Menu
+	loop
+		Odpytanie --> Odpytanie : zadanie pytania i oczekiwanie na odpowiedz Uzytkownika
+	end
+	Odpytanie --> Odpytanie : wyswietlenie oceny
+	Odpytanie --> ObslugaPliku : zapisanie wynikow do pliku
+
 end
 
 @enduml
